@@ -1,9 +1,53 @@
 {% extends 'frontend/base.html' %}
 {% load static %}
-{% block title %}Home{% endblock title %}
+{% block title %}Homepage{% endblock title %}
 
 {% block main-content %}
 
-<h3>Welcome to the Home page</h3>
+<section class="training-programs pt-5 pb-4">
+    <div class="container">
+        <div class="header d-flex align-items-center justify-content-between">
+            <h5 class="title text-uppercase">we ensure sustained behaviour change and skills growth</h4>
+            <a href="/training_programs" class="btn btn-sm btns">See more <i class="fas fa-arrow-right    "></i></a>
+        </div>
+
+        <!-- cards -->
+        <div class="cards">
+            <div class="card">
+                <div class="overlay-b"></div>
+                <img src="{% static 'frontend/images/img5.jpg' %}" alt="">
+                <div class="image-text d-flex align-items-center justify-content-between ml-3 mr-3">
+                    <h5 class="text-uppercase">continuous learning approach</h5>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right    "></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="overlay-b"></div>
+                <img src="{% static 'frontend/images/img3.jpg' %}" alt="">
+                <div class="image-text d-flex align-items-center justify-content-between ml-3 mr-3">
+                    <h5 class="text-uppercase">continuous learning approach</h5>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right    "></i>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="overlay-b"></div>
+                <img src="{% static 'frontend/images/img6.jpg' %}" alt="">
+                <div class="image-text d-flex align-items-center justify-content-between ml-3 mr-3">
+                    <h5 class="text-uppercase">continuous learning approach</h5>
+                    <div class="icon">
+                        <i class="fas fa-chevron-right    "></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- cards -->
+    </div>
+
+    
+</section>
 
 {% endblock main-content %}
