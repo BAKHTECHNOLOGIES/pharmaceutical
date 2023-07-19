@@ -2,43 +2,184 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>Name | {% block title %}{% endblock title %}</title>
+    <title>D&K Consultants | {% block title %}{% endblock title %}</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
+    
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+    <!-- swiper css -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+</head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light justify-content-around bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="#">Action 1</a>
-                        <a class="dropdown-item" href="#">Action 2</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+    <!-- navigation bar -->
+    
+    <nav class="navbar navbar-expand-lg fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">D&K Consultants</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span><i class="fas fa-bars    "></i></span>
+                
+            </button>
+                
+            <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="">Who We Are</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="">What we do</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="">Training Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="">Our Trainers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="">Contact Us</a>
+                    </li>
+                    
+                    
+                </ul>
+                
+            </div>
+            <div class="end-section d-flex align-items-center justify-content-center">
+                <!-- client profile -->
+                
+                {% if username == False %}
+                <!-- login/register button -->
+                <div class="login mr-3" style="margin-right: 10px;">
+                    <a href="/register" class="btn text-white " href="login.php">login | register</a>
+                </div>
+                {% else %}
+                <div class="login mr-3" style="margin-right: 10px;">
+                  <form action="{% url  'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <input
+                      class="btn btn-danger text text-capitalize"
+                      type="submit"
+                      value="Logout"
+                    />
+                  </form>
+                </div>
+                {% endif %}
+    
+            </div>
         </div>
     </nav>
+    <!-- navigation bar -->
+
+    <!-- caroussel -->
+    <div class="intro intro-carousel swiper">
+
+        <div class="swiper-wrapper">
+    
+          <div class="swiper-slide carousel-item-a intro-item bg-image"
+            style="background-image: url('/static/frontend/images/img2.jpg')">
+            <div class="overlay overlay-a"></div>
+            <div class="intro-content display-table">
+              <div class="table-cell">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <div class="intro-body">
+                        <h1 class="intro-title mb-4 ">
+                          finding the right <br /> trainer here
+                        </h1>
+                        <h5 class="intro-subtitle">it isn't about skilling, it's all about skilling better</h5>
+                        <div class="buttons d-flex align-items-center">
+                            <p class="intro-price ">
+                                <a href="/about" class="left"><span class="price-a">Know More <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                            </p>
+                            <p class=" intro-price">
+                                <a href="/about" class="right"><span class="price-a">Get a Quote <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                            </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide carousel-item-a intro-item bg-image"
+            style="background-image: url('/static/frontend/images/img3.jpg')">
+            <div class="overlay overlay-a"></div>
+            <div class="intro-content display-table">
+              <div class="table-cell">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <div class="intro-body">
+                        <h1 class="intro-title mb-4 ">
+                          finding the right <br /> trainer here
+                        </h1>
+                        <h5 class="intro-subtitle">it isn't about skilling, it's all about skilling better</h5>
+                        <div class="buttons d-flex align-items-center">
+                            <p class="intro-price ">
+                                <a href="/about" class="left"><span class="price-a">Know More <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                            </p>
+                            <p class=" intro-price">
+                                <a href="/about" class="right"><span class="price-a">Get a Quote <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                            </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide carousel-item-a intro-item bg-image"
+            style="background-image: url('/static/frontend/images/img4.jpg')">
+            <div class="overlay overlay-a"></div>
+            <div class="intro-content display-table">
+              <div class="table-cell">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <div class="intro-body">
+                        <h1 class="intro-title mb-4 ">
+                          finding the right <br /> trainer here
+                        </h1>
+                        <h5 class="intro-subtitle">it isn't about skilling, it's all about skilling better</h5>
+                        <div class="buttons d-flex align-items-center">
+                            <p class="intro-price ">
+                                <a href="/about" class="left"><span class="price-a">Know More <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                            </p>
+                            <p class=" intro-price">
+                                <a href="/about" class="right"><span class="price-a">Get a Quote <i class="fas ml-4 fa-arrow-alt-circle-right    "></i></span></a>
+                            </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next text-white"></div>
+        <div class="swiper-button-prev text-white"></div>
+      </div>
+    <!-- caroussel -->
 
 
     <!-- content -->
@@ -51,5 +192,28 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+
+    <!-- font awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
+
+    <!-- swiper js -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper
+        var swiper = new Swiper('.intro-carousel', {
+        // Set the desired options for the Swiper carousel
+        // For example, to enable autoplay, set the following:
+        autoplay: {
+            delay: 4000, // Delay between slides in milliseconds
+            disableOnInteraction: false, // Allow user interaction to interrupt autoplay
+        },
+        loop: true, // Enable continuous loop
+        pagination: {
+            el: '.swiper-pagination', // Pagination container
+            clickable: true, // Enable clickable pagination bullets
+        },
+        });
+    </script>
+
+</body>
 </html>
