@@ -252,6 +252,34 @@ color: rgb(66, 129, 14);
 
 /* tainings */
 
+.pharma-header
+{
+    height: 40vh;
+    background-color: rgba(5, 5, 70, 0.844);
+}
+
+.pharma-header-content h2{
+    font-size: 2.5rem;
+}
+
+.pharma-header-content p a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+.pharma-header-content p span
+{
+    color: rgb(112, 228, 18);
+    border-bottom: 2px solid rgb(112, 228, 18);
+}
+
+.footer
+{
+    background-color: rgba(5, 5, 70, 0.844);
+    padding: 25px;
+    color: #fff;
+}
+
 @media (max-width: 550px) {
     .cards{
         display: grid;
