@@ -11,7 +11,7 @@
 }
 .navbar-brand
 {
-    color: rgb(66, 129, 14);
+color: rgb(66, 129, 14);
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -202,6 +202,55 @@
 }
 
 /* others */
+
+/* tainings */
+.trainings{
+    background-color: #f0f0f0;
+    padding: 40px 0;
+}
+
+.trainings .cards .card
+{
+    border: none;
+    background-color: #fff;
+    border-radius: 5px;
+    max-height: 300vh;
+    padding: 20px;
+}
+
+.trainings .cards .card .icon
+{
+    background-color: rgba(5, 5, 70, 0.844);
+    width: 70px;
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    font-size: 16px;
+    position: absolute;
+    top: 0px;
+}
+.trainings .cards .card .icon:hover{
+    background-color: rgb(66, 129, 14);
+}
+.trainings .cards .card .card-title
+{
+    margin-top: 65px;
+    margin-bottom: -6px;
+    color: rgba(5, 5, 70, 0.844);
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.trainings .cards .card .card-link
+{
+    color: rgb(66, 138, 7);
+    font-weight: 700;
+}
+.trainings .cards .card .card-link:hover{
+    color: rgb(112, 228, 18);
+}
+
+/* tainings */
 
 @media (max-width: 550px) {
     .cards{
