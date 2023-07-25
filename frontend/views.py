@@ -14,6 +14,7 @@ from django.urls import reverse
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from .models import OurTrainer
+from django.shortcuts import render, get_object_or_404
 
 
 # @login_required(login_url='/login')
@@ -24,6 +25,10 @@ def home(request):
 def trainers(request):
     trainers = OurTrainer.objects.all()
     return render(request, "frontend/trainers.html", {'trainers': trainers})
+# single Trainer
+def trainer_details(request, id):
+    trainer = get_object_or_404(OurTrainer, pk=id)
+    return render(request, 'frontend/trainer_details.html', {'trainer': trainer})
 
 
 class RegistrationView(View):
