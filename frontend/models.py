@@ -1,11 +1,12 @@
 from django.db import models
 
-class Trainer(models.Model):
+class OurTrainer(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
     expertise = models.CharField(max_length=255)
-    bio = models.TextField()
+    description = models.TextField()
+    profile_image = models.ImageField(upload_to='frontend/static/frontend/images/')
 
     def __str__(self):
         return self.name
@@ -24,7 +25,8 @@ class PharmaceuticalCompany(models.Model):
 class TrainingProgram(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE)
+    
+    trainer = models.ForeignKey(OurTrainer, on_delete=models.CASCADE)
     pharmaceutical_company = models.ForeignKey(PharmaceuticalCompany, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()

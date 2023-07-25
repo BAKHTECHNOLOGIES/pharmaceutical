@@ -13,11 +13,17 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from .models import OurTrainer
 
 
 # @login_required(login_url='/login')
 def home(request):
     return render(request, "frontend/home.html")
+
+
+def trainers(request):
+    trainers = OurTrainer.objects.all()
+    return render(request, "frontend/trainers.html", {'trainers': trainers})
 
 
 class RegistrationView(View):
