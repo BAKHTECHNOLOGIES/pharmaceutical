@@ -1,0 +1,96 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+{% block title %}who we are{% endblock title %}
+{% block main-content %}
+<div class="main">
+    <!-- Include Swiper.js -->
+<link rel="stylesheet" href="path/to/swiper.min.css">
+<script src="path/to/swiper.min.js"></script>
+
+    <link rel="stylesheet" href="/static/frontend/css/trainer.css" />
+  <div class="whoweare p-5 mx-5 text-left">
+    <h1>ABOUT D&K CONSULTANTS</h1>
+    <hr class="bg-success" style="width: 100px; height:5px;">
+    <p>Welcome to D&K Consultants, your trusted partner in driving success and growth for your business. 
+        Established in 2020, we are a premier consulting firm that offers comprehensive 
+        solutions to help businesses of all sizes overcome challenges and achieve their strategic objectives.</p>
+        <button class="btn btn-success">Read More <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+  </div>
+  <div class="row bg-light p-5">
+    <div class="col-md-4">
+        <div class="trainer-card text-center shadow-sm bg-white p-3" style="border-radius:10px;" >
+            <div class="text-center"><i class="fa fa-eye" aria-hidden="true"></i></div>
+            <h4>Mission</h4>
+            <div class="overflow-hidden" style="height:100px;">
+              <p>To make sure that Pharmaceutical Industries get the required Trainers they require.</p> 
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="trainer-card text-center shadow-sm bg-white p-3" style="border-radius:10px;" >
+            <div class="text-center"><i class="fa fa-eye" aria-hidden="true"></i></div>
+            <h4>Our Values</h4>
+            <div class="overflow-hidden" style="height:100px;">
+              <p>To make sure that Pharmaceutical Industries get the required Trainers they require.</p> 
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="trainer-card text-center shadow-sm bg-white p-3" style="border-radius:10px;" >
+            <div class="text-center"><i class="fa fa-eye" aria-hidden="true"></i></div>
+            <h4>Vision</h4>
+            <div class="overflow-hidden" style="height:100px;">
+              <p>To make sure that Pharmaceutical Industries get the required Trainers they require.</p> 
+            </div>
+        </div>
+    </div>
+
+  </div>
+<div class="p-2 bg-success">
+  <h1 class="text-center p-3">Our team</h1>
+  <div class="row mx-5">
+    
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+          <div id="carouselId" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                  <!-- Indicators need to be populated dynamically based on the number of trainers -->
+                  {% for trainer in trainers %}
+                  <li data-target="#carouselId" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+                  {% endfor %}
+              </ol>
+  
+              <div class="carousel-inner" role="listbox">
+                  <!-- Carousel items should be inside the loop -->
+                  {% for trainer in trainers %}
+                  <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                      <div class="trainer-card shadow-sm bg-light">
+                          <!-- Use trainer profile image if available -->
+                          {% if trainer.profile_image %}
+                          <img class="trainer-image" src="/static/frontend/images/img2.jpg" style="height:100px; width:100px;">
+                          {% comment %} <img class="trainer-image" src="{{ trainer.profile_image.url }}" alt="{{ trainer.name }}" style="height:100px; width:100px;"> {% endcomment %}
+                          {% else %}
+                          <!-- Use a default image if the trainer.profile_image is not available -->
+                          <img class="trainer-image" src="/static/frontend/images/img2.jpg" alt="Default Image" style="height:100px; width:100px;">
+                          {% endif %}
+                          <h4>{{ trainer.name }}</h4>
+                      </div>
+                  </div>
+                  {% endfor %}
+              </div>
+  
+              <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+              </a>
+          </div>
+      </div>
+  </div>
+
+</div>
+
+{% endblock main-content %}

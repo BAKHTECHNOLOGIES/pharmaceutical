@@ -22,6 +22,11 @@ def home(request):
     return render(request, "frontend/home.html")
 
 
+def whoweare(request):
+    trainers = OurTrainer.objects.all()
+    return render(request, "frontend/whoweare.html", {'trainers': trainers})
+
+
 def trainers(request):
     trainers = OurTrainer.objects.all()
     return render(request, "frontend/trainers.html", {'trainers': trainers})
