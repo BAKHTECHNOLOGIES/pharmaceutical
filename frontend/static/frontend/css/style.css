@@ -275,9 +275,34 @@ color: rgb(66, 129, 14);
 
 .footer
 {
-    background-color: rgba(5, 5, 70, 0.844);
-    padding: 25px;
+    background-color: rgba(0, 0, 22, 0.844);
+    padding: 25px 0;
     color: #fff;
+
+}
+
+
+.footer ul 
+{
+    list-style-type: none;
+}
+
+.footer ul li a{
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.footer ul li a:hover{
+    color: rgb(112, 228, 18);
+}
+
+.card-btn a
+{
+    background-color: rgb(66, 129, 14);
+}
+
+.card-btn a:hover{
+    background-color: rgb(112, 228, 18);
 }
 
 @media (max-width: 550px) {
