@@ -18,10 +18,10 @@
 
     <!-- swiper css -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/static/frontend/css/style.css" />
 
 </head>
   <body>
-    
     <!-- navigation bar -->
     
     <nav class="navbar navbar-expand-lg fixed-top shadow">
@@ -39,7 +39,7 @@
                         <a href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="">Who We Are</a>
+                        <a href="/whoweare">Who We Are</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown open">
@@ -57,7 +57,7 @@
                         <a href="">Training Programs</a>
                     </li>
                     <li class="nav-item">
-                        <a href="">Our Trainers</a>
+                        <a href="/trainers">Our Trainers</a>
                     </li>
                     <li class="nav-item">
                         <a href="">Contact Us</a>
@@ -67,19 +67,31 @@
             </div>
             <div class="end-section d-flex align-items-center justify-content-center">
                 <!-- client profile -->
-                
-            
+        
+                {% if username == False %}
                 <!-- login/register button -->
                 <div class="login mr-3" style="margin-right: 10px;">
-                    <a class="btn text-white " href="login.php">login | register</a>
+                    <a href="/register" class="btn text-white " href="login.php">login | register</a>
                 </div>
+                {% else %}
+                <div class="login mr-3" style="margin-right: 10px;">
+                  <form action="{% url  'logout' %}" method="POST">
+                    {% csrf_token %}
+                    <input
+                      class="btn btn-danger text text-capitalize"
+                      type="submit"
+                      value="Logout"
+                    />
+                  </form>
+                </div>
+                {% endif %}
+
     
             </div>
         </div>
     </nav>
     <!-- navigation bar -->
 
-    
 
 
     <!-- content -->
