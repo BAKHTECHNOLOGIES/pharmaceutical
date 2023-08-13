@@ -226,6 +226,12 @@
     padding: 20px;
 }
 
+.trainings .cards .card:hover{
+    cursor: pointer;
+    border: 2px solid green;
+    /* display: none; */
+}
+
 .trainings .cards .card .icon
 {
     background-color: rgba(5, 5, 70, 0.844);

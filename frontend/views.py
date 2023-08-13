@@ -129,3 +129,15 @@ class LogoutView(View):
         messages.success(request, 'You have been logged out')
         return redirect('login')
 
+def trainings(request):
+    return render(request, 'frontend/trainings.html')
+
+# training views
+def validation(request):
+    return render(request, 'frontend/trainings/instrument_validation.html')
+def calibration(request):
+    return render(request, 'frontend/trainings/instrument_calibration.html')
+def operation(request):
+    return render(request, 'frontend/trainings/instrument_operation.html')
+def data_analysis(request):
+    return render(request, 'frontend/trainings/instrument_data_analysis.html')
