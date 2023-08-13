@@ -1,0 +1,42 @@
+@media (max-width: 500px) {
+    .sidebar
+    {
+        display: none;
+    }
+    .content
+    {
+        width: 100%;
+    }
+
+    .sidebar.active{
+        display: block;
+        width: 100%;
+    }
+
+    .sidebar.active .large{
+        display: block;
+    }
+
+    .sidebar.active .small{
+        display: none;
+    }
+
+    .sidebar .bars{
+        display: block;
+    }
+
+    .sidebar.active .sidebar-links li span{
+        display: inherit;
+    }
+
+    .content.active{
+        display: none;
+    }
+
+    .sidebar.active .icon-close{
+        display: block;
+        margin-top: 10px;
+    }
+
+
+}

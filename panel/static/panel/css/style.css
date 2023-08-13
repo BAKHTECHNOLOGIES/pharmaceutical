@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 15px;
+    color: rgb(5, 5, 70);
+}
+
+.main
+{
+    display: flex;
+}
+
+.sidebar{
+    width: 15%;
+    height: 100vh;
+    background-color: white;
+}
+
+.sidebar .small{
+    display: none;
+}
+
+.sidebar.active{
+    width: 8%;
+}
+
+.sidebar.active .large
+{
+    display: none;
+}
+.sidebar.active .small
+{
+    display: block;
+}
+
+.sidebar.active .sidebar-links li span
+{
+    display: none;
+}
+.sidebar.active .sidebar-links li a{
+    margin-left: 40px;
+}
+
+.content
+{
+    width: 85%;
+}
+
+.content.active{
+    width: 92%;
+}
+
+
+.sidebar .header
+{
+    background-color: rgb(5, 5, 70);
+    padding: 15px;
+    margin-top: 55px;
+    font-size: 15px;
+}
+
+.header .logo{
+     
+    /* color: white; */
+    width: 50%;
+    margin: 0 25%;
+    border-radius: 5px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #fff;
+
+}
+.header .logo i
+{
+    color: #fff;
+    font-size: 2rem;
+}
+
+.header:hover{
+    background-color: rgb(66, 129, 14);
+}
+
+.sidebar-links li a{
+    margin-left: 20px;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.sidebar .sidebar-links li a:hover{
+    border-bottom: 2px solid rgb(66, 129, 14);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.content .inner-content
+{
+    padding: 15px;
+    margin-left: 10px;
+}
+
+.sidebar .icon-close
+{
+    display: none; 
+    font-size: 24px; 
+    margin-bottom: -25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
