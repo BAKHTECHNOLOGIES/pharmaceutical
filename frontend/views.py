@@ -13,7 +13,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-from .models import OurTrainer
+from panel.models import Trainer
 from django.shortcuts import render, get_object_or_404
 
 
@@ -31,16 +31,16 @@ def cosmetics(request):
 
 
 def whoweare(request):
-    trainers = OurTrainer.objects.all()
+    trainers = Trainer.objects.all()
     return render(request, "frontend/whoweare.html", {'trainers': trainers})
 
 
 def trainers(request):
-    trainers = OurTrainer.objects.all()
+    trainers = Trainer.objects.all()
     return render(request, "frontend/trainers.html", {'trainers': trainers})
 # single Trainer
 def trainer_details(request, id):
-    trainer = get_object_or_404(OurTrainer, pk=id)
+    trainer = get_object_or_404(Trainer, pk=id)
     return render(request, 'frontend/trainer_details.html', {'trainer': trainer})
 
 
