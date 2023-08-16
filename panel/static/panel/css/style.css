@@ -179,6 +179,12 @@
     background-color: rgb(233, 186, 33) ;
 }  
 
+.inner-content{
+    height: 90vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
 
 
 
