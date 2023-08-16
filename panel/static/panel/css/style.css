@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 15px;
-    color: rgb(5, 5, 70);
 }
 
 .main
@@ -34,12 +33,17 @@
     display: block;
 }
 
+.sidebar .sidebar-links li a{
+    color: rgb(5, 5, 70);
+}
+
 .sidebar.active .sidebar-links li span
 {
     display: none;
 }
 .sidebar.active .sidebar-links li a{
     margin-left: 40px;
+    
 }
 
 .content
@@ -56,7 +60,7 @@
 {
     background-color: rgb(5, 5, 70);
     padding: 15px;
-    margin-top: 55px;
+    margin-top: 10px;
     font-size: 15px;
 }
 
@@ -71,7 +75,7 @@
     border: 1px solid #fff;
 
 }
-.header .logo i
+.header .logo .icon
 {
     color: #fff;
     font-size: 2rem;
@@ -106,6 +110,74 @@
     margin-bottom: -25px;
 }
 
+
+/* dashboard styles */
+.cards a
+{
+    text-decoration: none;
+}
+
+.cards .card{
+    height: 19vh;
+    padding: 10px;
+    border: none;
+    color: rgb(5, 5, 70);
+    padding-top: -10px;
+}
+
+.cards .icon{
+    font-size: 4rem;
+    /* border: 2px solid black; */
+    padding: 10px;
+    border-radius: 50%;
+    color: #fff;
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+.cards .card.requests{
+    border-left: 10px solid rgb(66, 129, 14);
+    background-color: rgb(223, 247, 224);
+    
+}
+
+.cards .card.requests .icon{
+    border: 2px solid rgb(66, 129, 14)  ;
+    background-color: rgb(66, 129, 14);
+}  
+
+.cards .card.programs{
+    border-left: 10px solid rgb(5, 5, 70);
+    /* color: rgb(223, 247, 224); */
+    background-color: rgb(196, 196, 238);
+}
+
+.cards .card.programs .icon{
+    border: 2px solid rgb(5, 5, 70)  ;
+    background-color: rgb(5, 5, 70) ;
+} 
+
+.cards .card.trainers{
+    border-left: 10px solid rgb(70, 5, 5);
+    /* color: rgb(223, 247, 224); */
+    background-color: rgb(236, 201, 201);
+}
+
+.cards .card.trainers .icon{
+    border: 2px solid rgb(70, 5, 5)  ;
+    background-color: rgb(70, 5, 5) ;
+} 
+ 
+.cards .card.clients{
+    border-left: 10px solid rgb(233, 186, 33);
+    /* color: rgb(223, 247, 224); */
+    background-color: rgb(247, 234, 191);
+}
+
+.cards .card.clients .icon{
+    border: 2px solid rgb(233, 186, 33)  ;
+    background-color: rgb(233, 186, 33) ;
+}  
 
 
 

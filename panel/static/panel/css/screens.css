@@ -1,4 +1,4 @@
-@media (max-width: 500px) {
+@media (max-width: 900px) {
     .sidebar
     {
         display: none;
@@ -39,4 +39,20 @@
     }
 
 
+}
+
+@media (min-width:500px) and (max-width: 1000px){
+
+    .cards .card{
+        height: 18vh;
+        width: 110%;
+    }
+    .cards .card .icon{
+        font-size: 2rem;
+        padding: 5px;
+    }
+    .cards .card .card-text{
+        /* display: none; */
+        margin: 0 -20px;
+    }
 }
