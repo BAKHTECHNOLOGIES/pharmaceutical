@@ -5,12 +5,19 @@ def dashboard(request):
     return render(request, 'panel/dashboard.html')
 
 
-def add_company(request):
+def view_client(request):
     if request.method == "GET":
         return render(request, 'panel/company.html')
     else:
         # add_company code 
         return render(request, 'panel/company.html')
+
+def add_client(request):
+    if request.method == "GET":
+        return render(request, 'panel/addclient.html')
+    else:
+        # add_company code 
+        return render(request, 'panel/addclient.html')
 
 
 def add_programcategory(request):
