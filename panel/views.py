@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
+from django.core.files.storage import FileSystemStorage
+
 
 # Create your views here.
 def dashboard(request):
@@ -65,23 +67,153 @@ def edit_category(request):
         messages.success(request,"Category edited successfully")
         return redirect("add_programcategory")
 
-
+# view for add a training program
 def add_training_program(request):
-    if request.method == "GET":
-        return render(request, 'panel/training_program.html')
+    if request.method == "POST":
+        program_name = request.POST.get("program_name")
+        category_id = request.POST.get("category")  # Get the ID of the selected category
+        duration = request.POST.get("duration")
+        description = request.POST.get("description")
+
+        try:
+            # Try to get the ProgramCategory instance by its ID
+            category = ProgramCategory.objects.get(pk=category_id)
+        except ProgramCategory.DoesNotExist:
+            category = None
+
+        if category:
+            program = TrainingProgram.objects.create(
+                program_name=program_name,
+                category=category,
+                duration=duration,
+                description=description,
+            )
+            program.save()
+            messages.success(request, "Training program added successfully")
+            return redirect("add_training_program")
+        else:
+            messages.error(request, "Invalid category selected")
+            return redirect("add_training_program")
+
     else:
-        # training_program Code
-        return render(request, 'panel/training_program.html')
-    
+        # Load the categories for the form
+        context = {
+            "categories": ProgramCategory.objects.all()
+        }
+        return render(request, 'panel/add_training_program.html', context)
+
+
+# view for training programs
+def training_programs(request):
+    context={
+        "programs": TrainingProgram.objects.all(),
+        "categories": ProgramCategory.objects.all()
+    }
+    return render(request, 'panel/training_program.html', context) 
+
+# view for deleting a training program
+def delete_program(request):
+    if request.method == "POST":
+        program_id = request.POST.get("program_id") 
+        this_program = TrainingProgram.objects.filter(pk=program_id)
+
+        this_program.delete()
+        messages.success(request,"Training Program deleted successfully")
+        return redirect("training_programs")
+
+#view for editing a training program
+def edit_program(request):
+    if request.method == "POST":
+        program_id = request.POST.get("program_id")
+        program_name = request.POST.get("program_name")
+        category = request.POST.get("category")
+        duration = request.POST.get("duration")
+        description = request.POST.get("description")
+
+        this_program = TrainingProgram.objects.get(pk=program_id)
+        category = ProgramCategory.objects.get(pk=category)
+        if this_program:
+            this_program.program_name = program_name
+            this_program.category = category
+            this_program.duration = duration
+            this_program.description = description
+            this_program.save()
+            messages.success(request,"Training Program edited successfully")
+            return redirect("training_programs")
+        else:
+            messages.success(request,"Training Program not edited")
+            return redirect("training_programs")
 
 def add_trainer(request):
-    if request.method == "GET":
-        return render(request, 'panel/trainers.html')
+    if request.method == "POST":
+        trainer_name = request.POST.get("trainer_name")
+        email = request.POST.get("email")
+        phone_number = request.POST.get("phone_number")
+        expertise = request.POST.get("expertise")
+
+        profile_image = request.FILES.get('profile_image')
+
+        trainer = Trainer.objects.create(
+            trainer_name = trainer_name,
+            email = email,
+            phone_number = phone_number,
+            expertise = expertise,
+        )
+        if profile_image:
+            fs = FileSystemStorage()
+            image_filename = fs.save(profile_image.name, profile_image)
+            trainer.profile_image = image_filename
+
+        trainer.save()
+        messages.success(request,"Trainer registered successfully")
+        return redirect("add_trainer")
     else:
         # trainers Code
-        return render(request, 'panel/trainers.html')
-    
+        return render(request, 'panel/addtrainers.html')
 
+# view for trainers
+def trainers(request):
+    context={
+        "trainers": Trainer.objects.all()
+
+    }
+    return render(request, "panel/trainers.html", context)
+
+
+#view for deleting a trainer
+def delete_trainer(request):
+    if request.method == "POST":
+        trainer_id = request.POST.get("trainer_is") 
+        this_trainer = Trainer.objects.filter(pk=trainer_id)
+
+        this_trainer.delete()
+        messages.success(request,"Trainer deleted successfully")
+        return redirect("trainers")
+
+
+#view for editing a trainer
+def edit_trainer(request):
+    if request.method == "POST":
+        trainer_id = request.POST.get("trainer_id")
+        trainer_name = request.POST.get("trainer_name")
+        email = request.POST.get("email")
+        phone_number = request.POST.get("phone_number")
+        expertise = request.POST.get("expertise")
+
+        this_trainer = Trainer.objects.get(pk=trainer_id)
+        if this_trainer:
+            this_trainer.trainer_name = trainer_name
+            this_trainer.email = email
+            this_trainer.phone_number = phone_number
+            this_trainer.expertise = expertise
+            this_trainer.save()
+            messages.success(request,"Trainer edited successfully")
+            return redirect("trainers")
+        else:
+            messages.success(request,"Trainer not edited")
+            return redirect("trainers")
+
+# view for displaying training requests
 def trainers_requests(request):
     if request.method == "GET":
         return render(request, 'panel/trainers_requests.html')

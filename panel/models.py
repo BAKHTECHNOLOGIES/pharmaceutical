@@ -26,7 +26,7 @@ class TrainingProgram(models.Model):
     program_name = models.CharField(max_length=200)
     category = models.ForeignKey(ProgramCategory, on_delete=models.CASCADE)
     duration = models.IntegerField()  # Duration in days
-    description = models.TextField()
+    description = models.CharField(max_length=250)
     def __str__(self):
         return self.program_name
 

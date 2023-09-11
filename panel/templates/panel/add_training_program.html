@@ -5,9 +5,28 @@
 
 {% block content %}
 <div class=" container inner-content">
-    <h4>Register Training Programmes</h4>
-    <form class="form" method="post" action="{% url 'add_training_program' %}">
+    <div class="btns mt-3 d-flex">
+      <h4 class="mr-3">Add Training Program:</h4>
+      <a href="{% url 'training_programs' %}" class=" btn btn-md btn-success">View List</a>
+    </div>
+    <hr>
+
+    <form class="form shadow rounded p-4 mt-3 col-md-9" method="post" action="{% url 'add_training_program' %}">
         {% csrf_token %}
+        {% if messages %}
+          <ul class="messages">
+              
+              {% for message in messages %}
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert" {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                      </button>
+                      <strong >{{ message }}</strong> 
+                  </div>
+              {% endfor %}
+          </ul>
+        {% endif %}
+        
         <div class="form-group">
           <label for="program_name">Program Name</label>
           <input type="text" class="form-control" id="program_name" name="program_name" required>
@@ -29,7 +48,7 @@
           <label for="description">Description</label>
           <textarea class="form-control" id="description" name="description" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Add Training Program</button>
+        <button type="submit" class="btn btn-sm btn-dark">Add Training Program</button>
       </form>
       
 </div>
