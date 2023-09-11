@@ -8,20 +8,77 @@ from django.core.files.storage import FileSystemStorage
 def dashboard(request):
     return render(request, 'panel/dashboard.html')
 
-
+# view for displaying registered clients/companies
 def view_client(request):
-    if request.method == "GET":
-        return render(request, 'panel/company.html')
-    else:
-        # add_company code 
-        return render(request, 'panel/company.html')
+    context={
+        "clients": Company.objects.all()
+    }
+    return render(request, 'panel/company.html',context)
 
+# view for adding a client or company
 def add_client(request):
-    if request.method == "GET":
-        return render(request, 'panel/addclient.html')
+    if request.method == "POST":
+        company_name = request.POST.get("company_name")
+        company_location = request.POST.get("company_location")
+        phone_number = request.POST.get("phone_number")
+        email = request.POST.get("email")
+        company_type = request.POST.get("company_type")
+
+        profile_image = request.FILES.get('profile_image')
+
+        client = Company.objects.create(
+            company_name = company_name,
+            company_location = company_location,
+            phone_number = phone_number,
+            email = email,
+            company_type = company_type,
+        )
+        if profile_image:
+            fs = FileSystemStorage()
+            image_filename = fs.save(profile_image.name, profile_image)
+            client.profile_image = image_filename
+
+        client.save()
+        messages.success(request,"Client registered successfully")
+        return redirect("add_client")
     else:
         # add_company code 
         return render(request, 'panel/addclient.html')
+
+#view for deleting a client
+def delete_client(request):
+    if request.method == "POST":
+        company_id = request.POST.get("company_id") 
+        this_client = Company.objects.filter(pk=company_id)
+
+        this_client.delete()
+        messages.success(request,"Client deleted successfully")
+        return redirect("view_client")
+
+# view for editing added client
+def edit_client(request):
+    if request.method == "POST":
+        company_id = request.POST.get("company_id")
+        company_name = request.POST.get("company_name")
+        company_location = request.POST.get("company_location")
+        email = request.POST.get("email")
+        phone_number = request.POST.get("phone_number")
+        company_type = request.POST.get("company_type")
+
+        this_client = Company.objects.get(pk=company_id)
+
+        if this_client:
+            this_client.company_name = company_name
+            this_client.company_location = company_location
+            this_client.email = email
+            this_client.phone_number = phone_number
+            this_client.company_type = company_type
+            this_client.save()
+            messages.success(request,"Client edited successfully")
+            return redirect("view_client")
+        else:
+            messages.success(request,"Client not edited")
+            return redirect("view_client")
 
 # view for adding a category
 def add_programcategory(request):

@@ -5,7 +5,14 @@
 
 {% block content %}
 <div class=" container inner-content">
-  {% if messages %}
+  
+    <div class="btns mt-3 d-flex">
+      <h4 class="mr-3">Training Programs List</h4>
+      <a href="{% url 'add_training_program' %}" class="btn  btn-sm btn-success">Add Program</a>
+    </div>
+    <hr>
+
+    {% if messages %}
       <ul class="messages">
           
           {% for message in messages %}
@@ -19,11 +26,7 @@
       </ul>
     {% endif %}
     
-    <div class="btns mt-3 d-flex">
-      <h4 class="mr-3">Training Programs List</h4>
-      <a href="{% url 'add_training_program' %}" class="btn  btn-sm btn-success">Add Program</a>
-    </div>
-    <hr>
+
     <div class="table-section p-3">
       <table class="table" id="table" >
         <thead>

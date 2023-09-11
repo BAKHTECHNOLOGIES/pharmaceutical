@@ -4,7 +4,11 @@ from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     path('dashboard', views.dashboard, name="Admin Dashboard"),
+
     path('view_client', views.view_client, name="view_client"),
+    path('add_client', views.add_client, name="add_client"),
+    path('delete_client', views.delete_client, name="delete_client"),
+    path('edit_client', views.edit_client, name="edit_client"),
 
     path('add_trainer', views.add_trainer, name="add_trainer"),
     path('trainers', views.trainers, name="trainers"),
@@ -21,5 +25,5 @@ urlpatterns = [
     path('training_programs', views.training_programs, name="training_programs"),
     path('delete_program', views.delete_program, name="delete_program"),
     path('edit_program', views.edit_program, name="edit_program"),
-    path('add_client', views.add_client, name="add_client"),
+    
 ]

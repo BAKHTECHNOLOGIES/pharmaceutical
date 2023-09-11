@@ -44,7 +44,7 @@ class Trainer(models.Model):
 
 # Model for Companies
 class Company(models.Model):
-    company_typeid = models.AutoField(primary_key=True)
+    company_id = models.AutoField(primary_key=True)
     company_name = models.CharField(max_length=200)
     company_location = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=20)
