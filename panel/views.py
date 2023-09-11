@@ -6,7 +6,13 @@ from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def dashboard(request):
-    return render(request, 'panel/dashboard.html')
+    context={
+        "programs_count": TrainingProgram.objects.count(),
+        "clients_count": Company.objects.count(),
+        "trainers_count": Trainer.objects.count(),
+        "training_request_count": Request.objects.count(),
+    }
+    return render(request, 'panel/dashboard.html', context)
 
 # view for displaying registered clients/companies
 def view_client(request):
