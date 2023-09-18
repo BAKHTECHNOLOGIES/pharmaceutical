@@ -3,6 +3,9 @@ from .models import *
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 
+import bcrypt
+
+
 
 # Create your views here.
 def dashboard(request):
@@ -29,27 +32,54 @@ def add_client(request):
         phone_number = request.POST.get("phone_number")
         email = request.POST.get("email")
         company_type = request.POST.get("company_type")
-
         profile_image = request.FILES.get('profile_image')
+        password = request.POST.get("password")  # Get the password from the form
+        confirm_password = request.POST.get("confirm_password")  # Get the confirmation password
 
-        client = Company.objects.create(
-            company_name = company_name,
-            company_location = company_location,
-            phone_number = phone_number,
-            email = email,
-            company_type = company_type,
-        )
+        if password:
+            if password != confirm_password:
+                messages.error(request, "Passwords do not match, please try again")
+                return redirect("add_client")
+
+            # Encrypt the password using bcrypt
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+            
+
+            client = Company.objects.create(
+                company_name=company_name,
+                company_location=company_location,
+                phone_number=phone_number,
+                email=email,
+                company_type=company_type,
+                password=hashed_password.decode('utf-8'),  # Store the hashed password
+            )
+
+        else:
+            password = "12345678"
+            hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+
+            client = Company.objects.create(
+                company_name=company_name,
+                company_location=company_location,
+                phone_number=phone_number,
+                email=email,
+                company_type=company_type,
+                password=hashed_password.decode('utf-8'),  # Store the hashed password
+            )
+
         if profile_image:
             fs = FileSystemStorage()
             image_filename = fs.save(profile_image.name, profile_image)
             client.profile_image = image_filename
 
         client.save()
-        messages.success(request,"Client registered successfully")
+        messages.success(request, "Client registered successfully")
         return redirect("add_client")
     else:
-        # add_company code 
+        # add_company code
         return render(request, 'panel/addclient.html')
+
 
 #view for deleting a client
 def delete_client(request):
@@ -278,8 +308,8 @@ def edit_trainer(request):
 
 # view for displaying training requests
 def trainers_requests(request):
-    if request.method == "GET":
-        return render(request, 'panel/trainers_requests.html')
-    else:
-        # trainers Code
-        return render(request, 'panel/trainers_requests.html')
+    training_requests = Request.objects.all()
+    context = {
+        'training_requests': training_requests
+    }
+    return render(request, 'panel/trainers_requests.html', context)
