@@ -89,14 +89,6 @@ WSGI_APPLICATION = 'pharmaceutical.wsgi.application'
 # }
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'pharmaceutical',
-    #     'USER': 'root',
-    #     'PASSWORD': '',
-    #     'HOST': '127.0.0.1', 
-    #     'PORT': '3306', 
-    # }
     "default":dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
