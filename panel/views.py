@@ -9,11 +9,13 @@ import bcrypt
 
 # Create your views here.
 def dashboard(request):
+    training_requests = Request.objects.all()
     context={
         "programs_count": TrainingProgram.objects.count(),
         "clients_count": Company.objects.count(),
         "trainers_count": Trainer.objects.count(),
         "training_request_count": Request.objects.count(),
+        'training_requests': training_requests
     }
     return render(request, 'panel/dashboard.html', context)
 
