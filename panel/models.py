@@ -26,7 +26,7 @@ class TrainingProgram(models.Model):
     program_name = models.CharField(max_length=200)
     category = models.ForeignKey(ProgramCategory, on_delete=models.CASCADE)
     duration = models.IntegerField()  # Duration in days
-    description = models.TextField()
+    description = models.CharField(max_length=250)
     def __str__(self):
         return self.program_name
 
@@ -44,13 +44,14 @@ class Trainer(models.Model):
 
 # Model for Companies
 class Company(models.Model):
-    company_typeid = models.AutoField(primary_key=True)
+    company_id = models.AutoField(primary_key=True)
     company_name = models.CharField(max_length=200)
     company_location = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=20)
     email = models.EmailField()
     company_type = models.CharField(max_length=100)
     profile_image = models.ImageField(upload_to='company_profiles/')
+    password = models.CharField(max_length= 255, default=None)
 
     class Meta:
         verbose_name_plural = 'Companies'
@@ -62,7 +63,9 @@ class Company(models.Model):
 class Request(models.Model):
     request_id = models.AutoField(primary_key=True)
     training_program = models.ForeignKey(TrainingProgram, on_delete=models.CASCADE)
-    trainer = models.ManyToManyField(Trainer)
+    user_id = models.ForeignKey(Company, default=None, on_delete=models.CASCADE)
+    
+    # trainer = models.ManyToManyField(Trainer)
     date_of_training = models.DateField()
     
 
