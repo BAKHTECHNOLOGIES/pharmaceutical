@@ -51,6 +51,7 @@ class Company(models.Model):
     email = models.EmailField()
     company_type = models.CharField(max_length=100)
     profile_image = models.ImageField(upload_to='company_profiles/')
+    password = models.CharField(max_length= 255, default=None)
 
     class Meta:
         verbose_name_plural = 'Companies'
@@ -62,7 +63,9 @@ class Company(models.Model):
 class Request(models.Model):
     request_id = models.AutoField(primary_key=True)
     training_program = models.ForeignKey(TrainingProgram, on_delete=models.CASCADE)
-    trainer = models.ManyToManyField(Trainer)
+    user_id = models.ForeignKey(Company, default=None, on_delete=models.CASCADE)
+    
+    # trainer = models.ManyToManyField(Trainer)
     date_of_training = models.DateField()
     
 
