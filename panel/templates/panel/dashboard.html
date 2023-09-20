@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-9">
                             <div class="card-body text-center">
-                                <h2 class="card-title">{{training_request_count}} +</h2>
+                                <h2 class="card-title">0+</h2>
                                 <p class="card-text">Training Requests</p>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="col-9">
                             <div class="card-body text-center">
-                                <h2 class="card-title"> {{programs_count}} +</h2>
+                                <h2 class="card-title">0+</h2>
                                 <p class="card-text">Training Programs</p>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="col-9">
                             <div class="card-body text-center">
-                                <h2 class="card-title"> {{trainers_count}} +</h2>
+                                <h2 class="card-title">0+</h2>
                                 <p class="card-text">Trainers</p>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-9">
                             <div class="card-body text-center">
-                                <h2 class="card-title"> {{clients_count}} +</h2>
+                                <h2 class="card-title">0+</h2>
                                 <p class="card-text">Clients </p>
                             </div>
                         </div>
@@ -96,30 +96,26 @@
     <div class="row mt-3">
         <div class=" col-md-8  ">
             <div class=" card clients_table bg-white shadow p-3" >
-                <div class="table-section mt-3">
-                    <table class="table" id="table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Training Program</th>
-                                <th>Client</th>
-                                <th>Request Date</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for request in training_requests %}
-                            <tr>
-                                <td>{{request.request_id}}</td>
-                                <td>{{request.training_program.program_name}}</td>
-                                <td>{{request.user_id.company_name}}</td>
-                                <td>{{request.date_of_training}}</td>
-                                <td></td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                <table class="table " id="table" style="font-size: 10px;">
+                    <h6><b>Recent training Requests</b></h6>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Company Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Training Program</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 

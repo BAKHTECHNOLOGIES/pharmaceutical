@@ -13,8 +13,6 @@
     <!--font awesome  -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
-    <!-- jquery datatabls -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <!-- custom CSS -->
     <link rel="stylesheet" href="{% static 'panel/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'panel/css/screens.css' %}">
@@ -56,7 +54,7 @@
                 </li>
                 <hr>
                 <li class="sidebar-item">
-                    <a href="/adminpanel/trainers"><i class="fas fa-user-graduate    mr-2"></i> <span>Trainers</span></a>
+                    <a href="/adminpanel/add_trainer"><i class="fas fa-user-graduate    mr-2"></i> <span>Trainers</span></a>
                 </li>
                 <hr>
                 <li class="sidebar-item">
@@ -125,21 +123,7 @@
     <!-- font awesome Js -->
     <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a" crossorigin="anonymous"></script>
 
-    <!-- jquery datatables -->
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <!-- Custom JS -->
     <script src="{% static 'panel/js/scripts.js' %}"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#table').DataTable({
-                paging: true,
-                searching: true,
-                ordering: true,
-                // Add more options
-            });
-        });
-    </script>
-        
 </body>
 </html>

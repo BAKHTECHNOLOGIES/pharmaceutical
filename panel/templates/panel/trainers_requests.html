@@ -5,33 +5,7 @@
 
 {% block content %}
 <div class=" container inner-content">
-    <h5>Training Requests from clients</h5>
-    <hr>
-
-    <div class="table-section mt-3">
-        <table class="table" id="table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Training Program</th>
-                    <th>Client</th>
-                    <th>Request Date</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for request in training_requests %}
-                <tr>
-                    <td>{{request.request_id}}</td>
-                    <td>{{request.training_program.program_name}}</td>
-                    <td>{{request.user_id.company_name}}</td>
-                    <td>{{request.date_of_training}}</td>
-                    <td></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <h4>Trainers Requests will Appear Here</h4>
     
       
 </div>
